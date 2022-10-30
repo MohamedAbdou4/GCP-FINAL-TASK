@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+
+metadata:
+  name: redis-python-app
+
+spec:
+  replicas: 3
+  
+  selector:
+    matchLabels:
+      app: redis-python-app
+
+  template:
+  
+    metadata:
+      labels:
+        app: redis-python-app
+
+    spec:
+      containers:
+      - name: redis-container
+        image: gcr.io/iti-labs/redis:mo
+        ports:
+        - containerPort: 6379
+
